@@ -1,0 +1,165 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.bg-parent {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  /* justify-content: top; */
+}
+
+/* pseudo elements*/
+.bg-parent::before {
+  content: "";
+  background-image: url(../public/background.jpg);
+  background-size: cover;
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  opacity: 0.9
+  ;
+}
+
+h1,
+h2 {
+  position: relative;
+  color: antiquewhite;
+  font-size: 14rem;
+  line-height: 0.9;
+  text-align: center;
+}
+
+h3 {
+  color: antiquewhite;
+}
+
+.welcome {
+  text-align: left;
+  padding-bottom: 10px;
+}
+
+.contactBlurb {
+  color: antiquewhite;
+}
+
+.storyh1 {
+  display: flex;
+  align-items: flex-start;
+  margin-top: 10em;
+}
+
+#aboutus {
+  position: absolute;
+  left: 20px;
+  top: 120px;
+  margin: 5em;
+  padding: 2em;
+}
+
+#contactus {
+  position: absolute;
+  left: 20px;
+  top: 350px;
+  margin: 5em;
+  padding: 2em;
+}
+
+img {
+  position: relative;
+}
+
+.totalh2 {
+  display: flex;
+  color: antiquewhite;
+}
+
+.about-p {
+  color: antiquewhite;
+}
+
+div.card {
+  background: rgba(80, 80, 80, 0.25);
+  color: antiquewhite;
+}
+
+div.modal-header {
+  background: antiquewhite;
+}
+
+div.modal-content {
+  background: rgba(80, 80, 80, 0.75)
+}
+
+a.navbarText,
+button.navbarText,
+button.btn,
+.modalText {
+  color: antiquewhite;
+}
+
+.login-page {
+  position: absolute;
+}
+
+.orderHistory {
+  color: antiquewhite;
+}
+
+label {
+  color: antiquewhite;
+}
+
+/* login form */
+div.mb-3,
+.formButton {
+  opacity: .9;
+}
+
+input#formBasicEmail,
+input#formBasicPassword {
+  width: 100%;
+}
+
+#splashbox {
+  height: 100%;
+  margin-top: 0px;
+  padding-top: 0px;
+  position: absolute;
+  left:0px;
+  text-align: center;
+  background-color: rgba(157, 151, 142, 0.8);
+  justify-content: space-evenly
+}
+
+
+#logobox {
+  position: relative;
+  top: 160px;
+  left: 200px;
+  height: 200px;
+
+  background-color: rgba(211, 211, 211, 0.908);
+  background-blend-mode: lighten;
+  opacity: 0.2;
+  padding: 2em;
+}
+
+#heroimage {
+  position: relative;
+  top: 200px;
+  left :250px;
+}

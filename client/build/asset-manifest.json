@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/Empire-Cheesecakes-Hosted/static/css/main.8e8c4bc3.css",
+    "main.js": "/Empire-Cheesecakes-Hosted/static/js/main.ee8830b4.js",
+    "static/media/background.jpg": "/Empire-Cheesecakes-Hosted/static/media/background.ab49a06334625232f041.jpg",
+    "index.html": "/Empire-Cheesecakes-Hosted/index.html",
+    "main.8e8c4bc3.css.map": "/Empire-Cheesecakes-Hosted/static/css/main.8e8c4bc3.css.map",
+    "main.ee8830b4.js.map": "/Empire-Cheesecakes-Hosted/static/js/main.ee8830b4.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.8e8c4bc3.css",
+    "static/js/main.ee8830b4.js"
+  ]
+}

@@ -1,7 +1,7 @@
 {
   "name": "empire-cheesecakes",
   "version": "0.1.0",
-  "homepage":"https://jlamb88.github.io/empire-cheesecakes"
+  "homepage":"https://jlamb88.github.io/Empire-Cheesecakes",
   "private": true,
   "scripts": {
     "predeploy":"npm run build",

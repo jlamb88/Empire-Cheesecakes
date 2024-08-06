@@ -1,8 +1,11 @@
 {
   "name": "empire-cheesecakes",
   "version": "0.1.0",
+  "homepage":"https://jlamb88.github.io/empire-cheesecakes"
   "private": true,
   "scripts": {
+    "predeploy":"npm run build",
+    "deploy":"gh-pages -d build",
     "start": "node server/server.js",
     "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
     "install": "cd server && npm i && cd ../client && npm i",
@@ -10,7 +13,8 @@
     "build": "cd client && npm run build"
   },
   "devDependencies": {
-    "concurrently": "^7.6.0"
+    "concurrently": "^7.6.0",
+    "gh-pages": "^6.1.1"
   },
   "keywords": [],
   "author": "",

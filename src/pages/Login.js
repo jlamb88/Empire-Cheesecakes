@@ -46,9 +46,9 @@ const LoginUser = () => {
                     firstName: loginData.login.user.firstName,
                     lastName: loginData.login.user.lastName
                 })
-                await getUserCart()
-                console.log("login:", userInfo.userId, loginData)
-                console.log("cart query:", userInfo.userId, userCart)
+                // await getUserCart()
+                // console.log("login:", userInfo.userId, loginData)
+                // console.log("cart query:", userInfo.userId, userCart)
             }
 
         } catch (Error) {
@@ -57,14 +57,14 @@ const LoginUser = () => {
         }
     };
 
-    // const logout = async () => {
-    //     if (cart.items.length > 0) {
-    //         await addCart({ variables: { userId: userInfo.userId } })
-    //     }
-    //     cart.deleteCart()
-    //     setLoggedIn(false)
-    //     setUserInfo({ userId: null, token: null });
-    // }
+    const logout = async () => {
+        // if (cart.items.length > 0) {
+        //     await addCart({ variables: { userId: userInfo.userId } })
+        // }
+        cart.deleteCart()
+        setLoggedIn(false)
+        setUserInfo({ userId: null, token: null });
+    }
 
     return (
         <div>
@@ -79,13 +79,13 @@ const LoginUser = () => {
 
             {loggedIn ? (
                 <div className="welcome">
-                    {/* //     <h2>
-                //         Welcome, <span>{userInfo.firstName}!</span>
-                //     </h2> */}
-                    <UserPage />
-                    {/* // <Button className='formButton' variant="secondary" type="submit" onClick={logout}>Logout</Button> */}
-
+                    <span>
+                        Welcome,{userInfo.firstName}!
+                    </span>
+                    <Button className="button" variant="secondary" onClick={logout}>Logout</Button>
                 </div>
+
+
             ) : (
                 <div>
                     <LoginForm login={login} />

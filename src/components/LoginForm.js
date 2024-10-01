@@ -10,9 +10,14 @@ const LoginForm = ({ login }) => {
         login(details);
     };
 
+    const registerHandler = (e) => {
+        e.preventDefault();
+
+    }
+
     return (
         <div className='login-page mt-4'>
-            <Form onSubmit={submitHandler}>
+            <Form onSubmit={submitHandler} className="mt-8">
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
                     <Form.Control type="email" placeholder="Enter email" onChange={e => setDetails({ ...details, email: e.target.value })} value={details.email} />
@@ -25,6 +30,7 @@ const LoginForm = ({ login }) => {
                     Submit
                 </Button>
             </Form>
+
         </div>
     );
 }

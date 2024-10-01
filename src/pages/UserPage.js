@@ -11,19 +11,10 @@ import { useCart } from '../contexts/CartContext'
 const UserPage = () => {
 
     const { setUserInfo, userInfo, loggedIn, setLoggedIn } = useAuth()
-    const [getUserOrders, { data: orderHist }] = useLazyQuery(USER_ORDER, { variables: { userId: userInfo.userId } })
 
     const cart = useCart()
 
-    useEffect(() => {
-        async function fetchData() {
-            console.log("order user", userInfo.userId)
-            await getUserOrders()
-
-            console.log("user Orders:", orderHist)
-        }
-        fetchData()
-    }, [getUserOrders, orderHist, userInfo])
+    console.log("useAuth:", userInfo, loggedIn)
 
     const [addCart] = useMutation(ADD_CART)
 
@@ -46,21 +37,8 @@ const UserPage = () => {
 
         <div>
             <h1 className='welcome'>Welcome, {userInfo.firstName}!</h1>
-            {orderHist && (
-                <div>
-                    <h3 className='orderHistory'>Order History: </h3>
-                    {orderHist.map((order) => (
-                        <Row key={order._id}> {/* Add a unique key for each element in the array */}
-                            <Col>{order.products.productId}</Col>
-                            <Col>{order.products.name}</Col>
-                            <Col>{order.total}</Col>
-                            <Col>{order.orderedAt}</Col> {/* Fix typo: order.orderAt to order.orderedAt */}
-                        </Row>
-                    ))}
-                </div>
-            )}
             <div>
-                <Button className='formButton' variant="secondary" type="submit" onClick={logout}>Logout</Button>
+                <Button variant="secondary" type='button' size='lg' onClick={logout}>Logout</Button>
             </div>
         </div>
 

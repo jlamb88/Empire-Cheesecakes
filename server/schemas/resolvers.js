@@ -1,4 +1,4 @@
-const { User, Product, Order, Cart, Comment } = require('../models/')
+const { User, Product, Order, Cart, Comment } = require('../models')
 const { signToken } = require('../utils/auth')
 const { AuthenticationError } = require('apollo-server-express')
 // Stripe Secret Key

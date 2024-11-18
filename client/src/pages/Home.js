@@ -12,7 +12,7 @@ const Home = () => {
 					<Row style={{ height: "125px" }}></Row>
 					<Stack>
 						<div className="mt-3"><h1>Shop Our Products</h1></div>
-						<div className="mt-3"><h2>Handmade baked goods delivered</h2></div>
+						<div className="mt-3"><h3>Handmade baked goods delivered</h3></div>
 						<div><Button className='mt-4 formButton' variant="secondary" type="submit" as={NavLink} to="/store">Enter Store</Button></div>
 					</Stack>
 				</Col>

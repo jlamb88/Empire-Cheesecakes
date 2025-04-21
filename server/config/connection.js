@@ -1,17 +1,21 @@
 const mongoose = require('mongoose');
 const { ServerApiVersion } = require('mongodb');
-const dotenv = require('dotenv')
 
-dotenv.config()
+let isConnected;
 
-mongoose.connect(
-  process.env.SERVER_MONGODB_URI,
-  {
+const connectToDatabase = async () => {
+  if (isConnected) return mongoose.connection;
+
+  await mongoose.connect(process.env.SERVER_MONGODB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    serverAPI: ServerApiVersion.v1
-  }
-);
+    serverAPI: ServerApiVersion.v1,
+    bufferCommands: false,
+  });
 
-module.exports = mongoose.connection;
+  isConnected = true;
+  return mongoose.connection;
+};
+
+module.exports = connectToDatabase;
 

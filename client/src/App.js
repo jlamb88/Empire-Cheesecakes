@@ -1,7 +1,7 @@
 //DEPENDENCIES
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Container, Row, Col } from 'react-bootstrap'
+import { Routes, Route } from 'react-router-dom';
+import { Container } from 'react-bootstrap'
 import {
   ApolloClient,
   InMemoryCache,
@@ -11,7 +11,7 @@ import {
 import { setContext } from '@apollo/client/link/context';
 
 //PAGES
-import { Home, UserPage, About, Store, Success, Cancel, SignUp, Login, QueryShell } from './pages'
+import { Home, About, Store, Success, Cancel, SignUp, Login, QueryShell } from './pages'
 
 //CSS
 import 'bootstrap/dist/css/bootstrap.min.css';

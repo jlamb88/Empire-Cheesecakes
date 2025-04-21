@@ -1,10 +1,12 @@
 const mongoose = require('mongoose');
 const { ServerApiVersion } = require('mongodb');
 
-let isConnected;
-
 const connectToDatabase = async () => {
-  if (isConnected) return mongoose.connection;
+  if (mongoose.connection.readyState === 1) {
+    // Already connected
+    console.log("MongoDB connected")
+    return mongoose.connection;
+  }
 
   await mongoose.connect(process.env.SERVER_MONGODB_URI, {
     useNewUrlParser: true,
@@ -12,10 +14,10 @@ const connectToDatabase = async () => {
     serverAPI: ServerApiVersion.v1,
     bufferCommands: false,
   });
-
-  isConnected = true;
+  console.log("MongoDB Connected")
   return mongoose.connection;
 };
 
 module.exports = connectToDatabase;
+
 

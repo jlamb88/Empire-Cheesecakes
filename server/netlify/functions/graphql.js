@@ -1,7 +1,7 @@
 const express = require('express');
 const { ApolloServer } = require('apollo-server-express');
 const serverless = require('serverless-http');
-const { authMiddleware } = require('./utils/auth');
+const { authMiddleware } = require('../../utils/auth');
 const cors = require('cors')
 const dotenv = require('dotenv')
 const path = require('path');
@@ -9,8 +9,8 @@ const path = require('path');
 dotenv.config()
 
 
-const { typeDefs, resolvers } = require('./schemas');
-const db = require('./config/connection');
+const { typeDefs, resolvers } = require('../../schemas');
+const db = require('../../config/connection');
 // Stripe Secret Key
 // const stripe = require('stripe')('sk_test_51M9WEeA0zgGYE8hKfLzdebUdsNrrjNE3SI2bkSS8NclVm5VXPYz0VglrMEMnmJnK4uKi3jsQvBEkHMaFZEpSJsLr00EcdyU0Ss');
 

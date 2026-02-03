@@ -1,0 +1,20 @@
+{
+	"geolocation": {
+		"data": {
+			"city": "Atlanta",
+			"country": {
+				"code": "US",
+				"name": "United States"
+			},
+			"subdivision": {
+				"code": "GA",
+				"name": "Georgia"
+			},
+			"timezone": "America/New_York",
+			"latitude": 33.7838,
+			"longitude": -84.4455,
+			"postalCode": "30318"
+		},
+		"timestamp": 1745266522033
+	}
+}

@@ -1,0 +1,1 @@
+module.exports = require('./server/netlify/functions/graphql.js')

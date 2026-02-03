@@ -2,57 +2,50 @@ const express = require('express');
 const { ApolloServer } = require('apollo-server-express');
 const serverless = require('serverless-http');
 const { authMiddleware } = require('../../utils/auth');
-const cors = require('cors')
-const dotenv = require('dotenv')
+const cors = require('cors');
+const dotenv = require('dotenv');
 const path = require('path');
 
-dotenv.config()
-
+dotenv.config();
 
 const { typeDefs, resolvers } = require('../../schemas');
-const db = require('../../config/connection');
-// Stripe Secret Key
-// const stripe = require('stripe')('sk_test_51M9WEeA0zgGYE8hKfLzdebUdsNrrjNE3SI2bkSS8NclVm5VXPYz0VglrMEMnmJnK4uKi3jsQvBEkHMaFZEpSJsLr00EcdyU0Ss');
-
-const PORT = process.env.PORT || 3001;
-
+const connectToDatabase = require('../../config/connection');
 
 const app = express();
-const server = new ApolloServer({
-    typeDefs,
-    resolvers,
-    context: authMiddleware,
-});
-
-app.use(cors()); // For Stripe
+app.use(cors());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-// if (process.env.NODE_ENV === 'production') {
-//     app.use(express.static(path.join(__dirname, '../client/build')));
-// }
-
-app.get('/', (req, res) => {
-    // res.sendFile(path.join(__dirname, '../client/build/index.html'));
-});
-
-let handler;
+let serverReady = false;
+let apolloHandler;
 
 const startServer = async () => {
-    await server.start();
-    server.applyMiddleware({ app, path: "/graphql" });
+    if (serverReady && apolloHandler) {
+        return apolloHandler;
+    }
 
-    // Ensure DB connection initializes before accepting requests
-    await new Promise((resolve) => db.once('open', resolve));
+    try {
+        await connectToDatabase();
 
-    handler = serverless(app);
+        const server = new ApolloServer({
+            typeDefs,
+            resolvers,
+            context: authMiddleware,
+        });
+
+        await server.start();
+        server.applyMiddleware({ app, path: '/graphql' });
+
+        apolloHandler = serverless(app);
+        serverReady = true;
+        return apolloHandler;
+    } catch (error) {
+        console.error('Error starting Apollo server:', error);
+        throw error;
+    }
 };
 
-startServer();
-
 exports.handler = async (event, context) => {
-    if (!handler) {
-        await startServer();
-    }
+    const handler = await startServer();
     return handler(event, context);
 };

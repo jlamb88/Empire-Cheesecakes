@@ -12,9 +12,8 @@ const connectToDatabase = async () => {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     serverAPI: ServerApiVersion.v1,
-    bufferCommands: false,
   });
-  console.log("MongoDB Connected")
+  console.log("MongoDB Connected - New")
   return mongoose.connection;
 };
 

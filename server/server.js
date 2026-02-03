@@ -13,8 +13,8 @@ const db = require('./config/connection');
 // Stripe Secret Key
 // const stripe = require('stripe')('sk_test_51M9WEeA0zgGYE8hKfLzdebUdsNrrjNE3SI2bkSS8NclVm5VXPYz0VglrMEMnmJnK4uKi3jsQvBEkHMaFZEpSJsLr00EcdyU0Ss');
 
-const PORT = process.env.PORT || 3001;
-
+const PORT = process.env.SERVER_PORT || 3001;
+console.log(process.env.SERVER_MONGODB_URI)
 
 const app = express();
 const server = new ApolloServer({
@@ -40,10 +40,11 @@ app.get('/', (req, res) => {
 const startApolloServer = async (typeDefs, resolvers) => {
   await server.start();
   server.applyMiddleware({ app });
+  console.log("MONGO");
   db.once('open', () => {
-    app.listen(PORT, () => {
-      console.log(`API server running on port ${PORT}!`);
-      console.log(`Use GraphQL at http://localhost:${PORT}${server.graphqlPath}`);
+    app.listen(SERVER_PORT, () => {
+      console.log(`API server running on port ${SERVER_PORT}!`);
+      console.log(`Use GraphQL at http://localhost:${SERVER_PORT}${server.graphqlPath}`);
     })
   })
 };
